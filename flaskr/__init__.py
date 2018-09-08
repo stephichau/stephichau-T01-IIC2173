@@ -4,11 +4,10 @@ import os
 import sys
 import psycopg2
 import json
-# from bson import json_util
-# from pymongo import MongoClient
 from flask import Flask, request, session, g, redirect, url_for, abort, \
      render_template, flash
 
+from params import POSTGRESDATABASE, POSTGRESPASS, POSTGRESUSER
 
 def create_app():
     app = Flask(__name__)
@@ -16,34 +15,18 @@ def create_app():
 
 app = create_app()
 
-# REPLACE WITH YOUR DATABASE NAME
-""" MONGODATABASE = "myDatabase"
-MONGOSERVER = "localhost"
-MONGOPORT = 27017
-client = MongoClient(MONGOSERVER, MONGOPORT)
-mongodb = client[MONGODATABASE]
-"""
-''' # Uncomment for postgres connection
-# REPLACE WITH YOUR DATABASE NAME, USER AND PASS
-POSTGRESDATABASE = "mydatabase"
-POSTGRESUSER = "myuser"
-POSTGRESPASS = "mypass"
 postgresdb = psycopg2.connect(
     database=POSTGRESDATABASE,
     user=POSTGRESUSER,
     password=POSTGRESPASS)
-'''
-
-#Cambiar por Path Absoluto en el servidor
-QUERIES_FILENAME = 'queries'
 
 
 @app.route("/")
 def home():
 	return "Hellp world"
 
-
-
+@app.route("/commentaries")
+    return "All comments"
 
 @app.route("/postgres")
 def postgres():
