@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{{ search }}</title>
+	<link rel="stylesheet" type="text/css" href="../static/css/cover.css">
+	<link href="../static/css/timeline.css" rel="stylesheet">
+</head>
+<body>
+<section class="intro">
+  <div class="container">
+		<h1 onclick='reverse()'>{{ search }} <span id='down'>&darr;</span> Timeline</h1>
+		<a href='/'><button>Back</button></a>
+  </div>
+</section>
+<section class="timeline"><ul>
+{% for res in results %}
+	<li>
+		<div>
+			<time>{{ res[1] }}</time>
+		<h4>IP: {{ res[0] }}</h4>
+		Comentario: {{ res[2] }} <br>
+		</div>
+	</li>
+{% endfor %}
+</ul></section>
+<script src="../static/js/timeline.js"></script>
+</body>
+</html>
